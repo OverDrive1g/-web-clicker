@@ -1,13 +1,35 @@
 <template>
-  <HelloWorld />
+  <v-container fluid fill-height>
+    <v-layout align-space-around justify-center row fill-height>
+      <v-container>
+        <v-card>
+          <Clicker />
+        </v-card>
+      </v-container>
+      <v-container>
+        <v-card>
+          <Statistic />
+        </v-card>
+      </v-container>
+      <v-container>
+        <v-card>
+          <UpgradeList />
+        </v-card>
+      </v-container>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import Clicker from '../components/Clicker.vue'
+  import Statistic from "../components/Statistic.vue";
+  import UpgradeList from "../components/UpgradeList.vue";
 
   export default {
     components: {
-      HelloWorld
+      UpgradeList,
+      Statistic,
+      Clicker
     }
   }
 </script>
