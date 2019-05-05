@@ -16,14 +16,25 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import UpgradeItem from "./UpgradeItem";
     export default {
         name: "UpgradeList",
         components: {UpgradeItem},
         data(){
             return {
-                upgrades:[{id:1, text:"test upgrade1"},{id:2, text:"test upgrade2"},{id:3, text:"test upgrade3"},{id:4, text:"test upgrade4"},]
+                upgrades:[]
             }
+        },
+        created() {
+            axios.get('http://localhost:3000/upgrade')
+                .then(response => {
+                    console.log(response.data)
+                    this.upgrades = response.data
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     }
 </script>
