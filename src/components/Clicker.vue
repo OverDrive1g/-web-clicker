@@ -1,7 +1,7 @@
 <template>
     <div
-        v-ripple
-        class="pa-5">
+        class="pa-3"
+    >
         <v-img
                 :src="require('../assets/pig-coin.svg')"
                 v-on:click="add"

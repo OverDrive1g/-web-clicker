@@ -2,7 +2,9 @@
   <v-container fluid fill-height>
     <v-layout align-space-around justify-center row fill-height>
       <v-container>
-        <v-card class="elevation-24">
+        <v-card
+                v-ripple
+                class="elevation-24">
           <Clicker />
         </v-card>
       </v-container>
