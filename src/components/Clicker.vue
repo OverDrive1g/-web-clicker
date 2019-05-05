@@ -1,5 +1,6 @@
 <template>
     <div
+        v-ripple
         class="pa-5">
         <v-img
                 :src="require('../assets/pig-coin.svg')"
