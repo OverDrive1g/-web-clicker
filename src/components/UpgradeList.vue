@@ -3,10 +3,6 @@
         <template
                 v-for="(item, index) in upgrades"
         >
-            <v-divider
-                    v-if="index > 0"
-                    :key="index"
-            ></v-divider>
             <UpgradeItem
                     :upgrade="item"
                     :key="'item' + index"
@@ -27,7 +23,7 @@
             }
         },
         created() {
-            axios.get('http://localhost:3000/upgrade')
+            axios.get('http://213.32.68.143:3000/upgrade')
                 .then(response => {
                     console.log(response.data)
                     this.upgrades = response.data
