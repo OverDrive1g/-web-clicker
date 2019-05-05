@@ -1,12 +1,15 @@
 <template>
     <div>
-        Statistic
+        Clicks: {{count}}
     </div>
 </template>
 
 <script>
+    import { mapState } from 'vuex'
+
     export default {
-        name: "Statistic"
+        name: "Statistic",
+        computed: mapState(["count"]),
     }
 </script>
 
