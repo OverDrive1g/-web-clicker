@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div
+        class="pa-5">
         <v-img
                 :src="require('../assets/pig-coin.svg')"
                 v-on:click="add"
