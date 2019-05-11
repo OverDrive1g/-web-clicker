@@ -14,7 +14,9 @@
 </template>
 
 <script>
+
 import Home from './views/Home.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -25,6 +27,12 @@ export default {
     return {
       //
     }
+  },
+  methods:{
+    ...mapActions(['initUpgradeList'])
+  },
+  async created() {
+    this.initUpgradeList()
   }
 }
 </script>

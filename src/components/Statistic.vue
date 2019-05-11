@@ -1,6 +1,6 @@
 <template>
     <div>
-        Clicks: {{count}}
+        Clicks: {{Math.round(count * 100) / 100}}
     </div>
 </template>
 
