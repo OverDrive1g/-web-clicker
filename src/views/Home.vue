@@ -1,23 +1,21 @@
 <template>
-  <v-container fluid fill-height>
-    <v-layout align-space-around justify-center row fill-height>
-      <v-container>
-        <v-card
-                v-ripple
-                class="elevation-24">
+  <v-container>
+    <v-layout align-center justify-space-between wrap>
+      <v-flex lg4 xl4 md4 sm12 xs12 pa-3>
+        <v-card v-ripple class="elevation-24">
           <Clicker />
         </v-card>
-      </v-container>
-      <v-container>
+      </v-flex>
+      <v-flex lg4 xl4 md4 sm12 xs12 pa-3>
         <v-card class="elevation-24">
           <Statistic />
         </v-card>
-      </v-container>
-      <v-container>
+      </v-flex>
+      <v-flex lg4 xl4 md4 sm12 xs12 pa-3>
         <v-card class="elevation-24">
           <UpgradeList />
         </v-card>
-      </v-container>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>

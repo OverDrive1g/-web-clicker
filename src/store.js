@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count:10000,
+    count:0,
     income:1,
     upgradeList:[]
   },

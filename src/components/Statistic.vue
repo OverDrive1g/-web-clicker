@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pa-3">
         Clicks: {{Math.round(count * 100) / 100}}
     </div>
 </template>
