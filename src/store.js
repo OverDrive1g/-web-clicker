@@ -29,8 +29,12 @@ export default new Vuex.Store({
         state.count -= currPrice
         state.income += foundUpgrade.income
       }
+    },
+    loadSave(state, payload){
+      state.count = payload.count
+      state.income = payload.income
+      state.upgradeList = payload.upgradeList
     }
-
   },
   actions: {
     async initUpgradeList(context){

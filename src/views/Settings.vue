@@ -69,6 +69,7 @@
 
 <script>
     import { mapState } from 'vuex'
+    import { mapMutations } from 'vuex'
 
     export default {
         name: "Settings",
@@ -96,12 +97,22 @@
                     return
                 }
 
-                console.log(payload)
+                if(!payload.count || !payload.income || !payload.upgradeList) {
+                    this.alertType = 'error'
+                    this.alertText = "Can't load data! "
+                    this.loadDialog=false
+                    this.sheet=true
+                    return
+                }
+
+                this.loadSave(payload)
+
                 this.alertType = 'success'
                 this.alertText = 'Loading is done'
                 this.loadDialog=false
                 this.sheet=true
-            }
+            },
+            ...mapMutations(["loadSave"])
         },
         data(){
             return {

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
     import { mapMutations } from 'vuex'
 
     export default {
@@ -19,7 +18,7 @@
             ...mapMutations({
                 add:'increment'
             })
-        }
+        },
     }
 </script>
 
