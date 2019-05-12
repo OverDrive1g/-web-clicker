@@ -14,7 +14,7 @@
             <v-list-tile-title>Dashboard</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile>
+        <v-list-tile v-on:click="go2settings">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
@@ -26,33 +26,39 @@
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-lef>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Кликер</span>
+      <v-toolbar-title class="headline text-uppercase" v-on:click="clickOnLogo">
+        <span>Clicker</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
 
     <v-content>
-      <Home/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
 
-import Home from './views/Home.vue'
+// import Home from './views/Home.vue'
 import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    Home
+    // Home
   },
   data: () => ({
     drawer: null
   }),
   methods:{
-    ...mapActions(['initUpgradeList'])
+    ...mapActions(['initUpgradeList']),
+    clickOnLogo(){
+      this.$router.push('/')
+    },
+    go2settings(){
+      this.$router.push('settings')
+    }
   },
   async created() {
     this.initUpgradeList()
