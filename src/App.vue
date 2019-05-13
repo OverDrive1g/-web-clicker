@@ -6,15 +6,31 @@
             app
     >
       <v-list dense>
-        <v-list-tile>
+        <v-list-tile v-on:click="$router.push('/')">
           <v-list-tile-action>
             <v-icon>dashboard</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Dashboard</v-list-tile-title>
+            <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile v-on:click="go2settings">
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>fingerprint</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Login</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>shop</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Donat</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile v-on:click="$router.push('settings')">
           <v-list-tile-action>
             <v-icon>settings</v-icon>
           </v-list-tile-action>
@@ -26,7 +42,7 @@
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-lef>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title class="headline text-uppercase" v-on:click="clickOnLogo">
+      <v-toolbar-title class="headline text-uppercase" v-on:click="$router.push('/')">
         <span>Clicker</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -52,13 +68,7 @@ export default {
     drawer: null
   }),
   methods:{
-    ...mapActions(['initUpgradeList']),
-    clickOnLogo(){
-      this.$router.push('/')
-    },
-    go2settings(){
-      this.$router.push('settings')
-    }
+    ...mapActions(['initUpgradeList'])
   },
   async created() {
     this.initUpgradeList()
