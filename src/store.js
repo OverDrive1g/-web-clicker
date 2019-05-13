@@ -11,9 +11,15 @@ export default new Vuex.Store({
     upgradeList:[]
   },
   mutations: {
-    increment (state) {
-      state.count += state.income
+    increment (state, income) {
+      if(income > 0){
+        state.count += income
+      }
+      else{
+        state.count += state.income
+      }
     },
+
     initUpgradeList(state, initData){
       state.upgradeList = initData
     },
@@ -38,7 +44,7 @@ export default new Vuex.Store({
   },
   actions: {
     async initUpgradeList(context){
-      let response = await axios.get('http://213.32.68.143:3000/upgrade')
+      let response = await axios.get('/api/upgrade')
       let data = response.data.map(i=>{i.count = 0; return i})
       context.commit('initUpgradeList', data)
     }

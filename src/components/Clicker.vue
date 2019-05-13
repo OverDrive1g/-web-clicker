@@ -9,7 +9,7 @@
         <v-progress-linear
                 color="error"
                 height="20"
-                :value="hp"
+                :value="hp/max*100"
                 class="text-md-center"
         >{{hp}}</v-progress-linear>
     </div>
@@ -17,24 +17,32 @@
 
 <script>
     import { mapMutations } from 'vuex'
+    import { mapState } from 'vuex'
 
     export default {
         name: "Clicker",
         data(){
             return {
-                hp:100
+                hp:0,
+                max:0
             }
         },
+        beforeMount(){
+            this.max = this.income * 10
+            this.hp = this.income * 10
+        },
+        computed: {
+            ...mapState(["count","income"])
+        },
         methods: {
-            ...mapMutations({
-                add:'increment'
-            }),
+            ...mapMutations(['increment']),
             onClick:function(){
-                this.hp = this.hp - 20;
-                if(this.hp < 0){
-                    this.hp = 100
+                this.hp = this.hp - this.income;
+                if(this.hp <= 0){
+                    this.max = this.income * 10
+                    this.hp = this.income * 10
+                    this.increment(Math.floor(Math.random() * this.income*10))
                 }
-                this.add()
             }
         },
     }
