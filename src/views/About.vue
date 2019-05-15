@@ -9,9 +9,32 @@
     name: "About",
     metaInfo: {
       title: 'About',
-      titleTemplate: '%s | Clicker',
       meta: [
-        {name: 'description', content: 'I have things here on my site.'}
+        {name: 'description', content: 'Description of this beautiful clicker. All its features. And also why you should at least make a couple of clicks.'},
+
+        // OpenGraph data (Most widely used)
+        {property: 'og:title', content: 'About | Clicker'},
+        {property: 'og:site_name', content: 'Clicker'},
+        {property: 'og:type', content: 'website'},
+        {property: 'og:url', content: 'https://cl1cker.online/about'},
+        {property: 'og:image', content: 'https://cl1cker.online/logo.png'},
+        {property: 'og:description', content: 'Description of this beautiful clicker. All its features. And also why you should at least make a couple of clicks.'},
+
+        // Twitter card
+        {name: 'twitter:card', content: 'summary'},
+        {name: 'twitter:site', content: 'https://cl1cker.online/about'},
+        {name: 'twitter:title', content: 'About | Clicker'},
+        {name: 'twitter:description', content: 'Description of this beautiful clicker. All its features. And also why you should at least make a couple of clicks.'},
+        {name: 'twitter:creator', content: '@OverDrive1g'},
+        {name: 'twitter:image:src', content: 'https://cl1cker.online/logo.png'},
+
+        // Google / Schema.org markup:
+        {itemprop: 'name', content: 'About | Clicker'},
+        {itemprop: 'description', content: 'Description of this beautiful clicker. All its features. And also why you should at least make a couple of clicks.'},
+        {itemprop: 'image', content: 'https://cl1cker.online/logo.png'}
+      ],
+      link: [
+        {rel: 'canonical', href: 'https://www.cl1cker.online/about'}
       ]
     }
   }

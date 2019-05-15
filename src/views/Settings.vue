@@ -127,6 +127,36 @@
         computed: {
             ...mapState(["count","income","upgradeList"])
         },
+        metaInfo: {
+            title: 'Settings',
+            meta: [
+                {name: 'description', content: 'Tell you about the settings? I think it is not necessary. But just in case: here you can customize some things.'},
+
+                // OpenGraph data (Most widely used)
+                {property: 'og:title', content: 'Settings | Clicker'},
+                {property: 'og:site_name', content: 'Clicker'},
+                {property: 'og:type', content: 'website'},
+                {property: 'og:url', content: 'https://cl1cker.online/settings'},
+                {property: 'og:image', content: 'https://cl1cker.online/logo.png'},
+                {property: 'og:description', content: 'Tell you about the settings? I think it is not necessary. But just in case: here you can customize some things.'},
+
+                // Twitter card
+                {name: 'twitter:card', content: 'summary'},
+                {name: 'twitter:site', content: 'https://cl1cker.online/settings'},
+                {name: 'twitter:title', content: 'Settings | Clicker'},
+                {name: 'twitter:description', content: 'Tell you about the settings? I think it is not necessary. But just in case: here you can customize some things.'},
+                {name: 'twitter:creator', content: '@OverDrive1g'},
+                {name: 'twitter:image:src', content: 'https://cl1cker.online/logo.png'},
+
+                // Google / Schema.org markup:
+                {itemprop: 'name', content: 'Settings | Clicker'},
+                {itemprop: 'description', content: 'Tell you about the settings? I think it is not necessary. But just in case: here you can customize some things.'},
+                {itemprop: 'image', content: 'https://cl1cker.online/logo.png'}
+            ],
+            link: [
+                {rel: 'canonical', href: 'https://www.cl1cker.online/settings'}
+            ]
+        }
     }
 </script>
 

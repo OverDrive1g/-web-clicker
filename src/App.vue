@@ -71,8 +71,6 @@
 </template>
 
 <script>
-
-// import Home from './views/Home.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -88,6 +86,9 @@ export default {
   },
   async created() {
     this.initUpgradeList()
+  },
+  metaInfo:{
+    titleTemplate: '%s | Clicker'
   }
 }
 </script>
