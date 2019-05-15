@@ -30,6 +30,11 @@ export default new Router({
       path: '/roadmap',
       name: 'Roadmap',
       component: Roadmap
+    },
+    {
+      path: '*',
+      name: 'Home',
+      component: Home
     }
   ]
 })
