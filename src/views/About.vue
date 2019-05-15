@@ -6,7 +6,14 @@
 
 <script>
   export default {
-    name: "About"
+    name: "About",
+    metaInfo: {
+      title: 'About',
+      titleTemplate: '%s | Clicker',
+      meta: [
+        {name: 'description', content: 'I have things here on my site.'}
+      ]
+    }
   }
 </script>
 
