@@ -27,7 +27,7 @@
             <v-icon>shop</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Donat</v-list-tile-title>
+            <v-list-tile-title>Donation</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-on:click="$router.push('settings')">
