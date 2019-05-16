@@ -34,7 +34,7 @@
     metaInfo:{
       title: 'Pig-Clicker',
       meta:[
-        {name: 'description', content: 'Awesome clicker with little pig'},
+        {name: 'description', content: 'Cl1cker.online is awesome clicker game with little pig. You do not agree? Then just click a couple of times.'},
 
         // OpenGraph data (Most widely used)
         {property: 'og:title', content: 'Pig-Clicker'},
@@ -58,7 +58,7 @@
         {itemprop: 'image', content: 'https://cl1cker.online/logo.png'}
       ],
       link: [
-        {rel: 'canonical', href: 'https://www.cl1cker.online/'}
+        {rel: 'canonical', href: 'https://cl1cker.online/'}
       ]
     }
   }

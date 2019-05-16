@@ -46,7 +46,7 @@
                 {itemprop: 'image', content: 'https://cl1cker.online/logo.png'}
             ],
             link: [
-                {rel: 'canonical', href: 'https://www.cl1cker.online/roadmap'}
+                {rel: 'canonical', href: 'https://cl1cker.online/roadmap'}
             ]
         }
     }
