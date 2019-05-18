@@ -6,7 +6,7 @@ class MobFactory {
         return Vue.observable({
             name:"test mob",
             hp,
-            gold:hp
+            gold:100
         })
     }
 }

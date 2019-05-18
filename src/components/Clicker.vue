@@ -9,7 +9,7 @@
         <v-progress-linear
                 color="error"
                 height="20"
-                :value="mob.hp/mob.gold*100"
+                :value="mob.hp/max*100"
                 class="text-md-center"
         >{{Math.round(mob.hp * 100) / 100}} HP</v-progress-linear>
     </div>
@@ -26,7 +26,6 @@
         name: "Clicker",
         data(){
             return {
-                hp:0,
                 max:0
             }
         },
@@ -45,6 +44,7 @@
             },
             onGenerateMob(mob){
                 this.mob = mob
+                this.max = mob.hp
             }
         },
     }

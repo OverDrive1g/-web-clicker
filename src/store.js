@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count:10000,
+    count:0,
     attack:1,
     upgradeList:[]
   },
@@ -38,7 +38,7 @@ export default new Vuex.Store({
     },
     loadSave(state, payload){
       state.count = payload.count
-      state.attack = payload.income
+      state.attack = payload.attack
       state.upgradeList = payload.upgradeList
     }
   },
