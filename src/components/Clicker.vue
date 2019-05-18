@@ -9,15 +9,18 @@
         <v-progress-linear
                 color="error"
                 height="20"
-                :value="hp/max*100"
+                :value="mob.hp/mob.gold*100"
                 class="text-md-center"
-        >{{hp}}</v-progress-linear>
+        >{{Math.round(mob.hp * 100) / 100}} HP</v-progress-linear>
     </div>
 </template>
 
 <script>
     import { mapMutations } from 'vuex'
     import { mapState } from 'vuex'
+    import {MainController} from "../controllers/MainController";
+
+    let mainController
 
     export default {
         name: "Clicker",
@@ -28,21 +31,20 @@
             }
         },
         beforeMount(){
-            this.max = this.income * 10
-            this.hp = this.income * 10
+            mainController = new MainController(this.attack, this.increment, this.onGenerateMob)
+            this.max = this.attack * 10
+            this.hp = this.attack * 10
         },
         computed: {
-            ...mapState(["count","income"])
+            ...mapState(["count","attack"])
         },
         methods: {
             ...mapMutations(['increment']),
             onClick:function(){
-                this.hp = this.hp - this.income;
-                if(this.hp <= 0){
-                    this.max = this.income * 10
-                    this.hp = this.income * 10
-                    this.increment(Math.floor(Math.random() * this.income*10))
-                }
+                mainController.onClick(this.attack)
+            },
+            onGenerateMob(mob){
+                this.mob = mob
             }
         },
     }

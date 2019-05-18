@@ -13,9 +13,9 @@
 
                 <v-card-text>
                     {{JSON.stringify({
-                        count: this.count,
-                        income: this.income,
-                        upgradeList: this.upgradeList
+                    count: this.count,
+                    attack: this.attack,
+                    upgradeList: this.upgradeList
                     })}}
                 </v-card-text>
                 <v-card-actions>
@@ -97,7 +97,7 @@
                     return
                 }
 
-                if(!payload.count || !payload.income || !payload.upgradeList) {
+                if(!payload.count || !payload.attack || !payload.upgradeList) {
                     this.alertType = 'error'
                     this.alertText = "Can't load data! "
                     this.loadDialog=false
@@ -125,7 +125,7 @@
             }
         },
         computed: {
-            ...mapState(["count","income","upgradeList"])
+            ...mapState(["count","attack","upgradeList"])
         },
         metaInfo: {
             title: 'Settings',

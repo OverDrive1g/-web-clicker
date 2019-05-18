@@ -6,8 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count:0,
-    income:1,
+    count:10000,
+    attack:1,
     upgradeList:[]
   },
   mutations: {
@@ -16,7 +16,7 @@ export default new Vuex.Store({
         state.count += income
       }
       else{
-        state.count += state.income
+        state.count += state.attack
       }
     },
 
@@ -33,12 +33,12 @@ export default new Vuex.Store({
       if(state.count >= currPrice){
         foundUpgrade.count++
         state.count -= currPrice
-        state.income += foundUpgrade.income
+        state.attack += foundUpgrade.income
       }
     },
     loadSave(state, payload){
       state.count = payload.count
-      state.income = payload.income
+      state.attack = payload.income
       state.upgradeList = payload.upgradeList
     }
   },
