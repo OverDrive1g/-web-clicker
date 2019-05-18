@@ -59,7 +59,7 @@
     <v-toolbar app fixed clipped-lef>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title class="headline text-uppercase" v-on:click="$router.push('/')">
-        <span>Clicker</span>
+        <span>{{$route.name}}</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
