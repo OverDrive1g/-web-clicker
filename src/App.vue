@@ -88,7 +88,10 @@ export default {
     this.initUpgradeList()
   },
   metaInfo:{
-    titleTemplate: '%s | Clicker'
+    titleTemplate: '%s | Clicker',
+    meta: [
+      {name: 'theme-color', content: '#212121'},
+    ]
   }
 }
 </script>

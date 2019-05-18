@@ -9,10 +9,12 @@ import store from './store'
 Vue.config.productionTip = false;
 
 Vue.use(Meta)
-Vue.use(VueAnalytics, {
-  id: 'UA-140140564-1',
-  router
-})
+if(Vue.config.productionTip){
+  Vue.use(VueAnalytics, {
+    id: 'UA-140140564-1',
+    router
+  })
+}
 
 new Vue({
   router,
