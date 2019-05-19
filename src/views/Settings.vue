@@ -1,6 +1,6 @@
 <template>
     <v-layout align-center justify-center fill-height>
-        <v-btn @click.stop="saveDialog = true; onSave()">
+        <v-btn @click.stop="onSave()">
             Save
         </v-btn>
         <v-btn @click.stop="loadDialog = true">
@@ -64,7 +64,6 @@
 </template>
 
 <script>
-    // import axios from 'axios'
     import { mapState } from 'vuex'
     import { mapMutations } from 'vuex'
     import { mapActions } from 'vuex'
@@ -76,6 +75,13 @@
                 this.save()
                     .then(res=>{
                         this.uuid = res.data.response.uuid
+                        this.saveDialog = true
+                    })
+                    .catch(err=>{
+                        this.alertText = err.message
+                        this.alertType = 'error'
+                        this.loadDialog=false
+                        this.sheet=true
                     })
             },
             async onLoad(){
