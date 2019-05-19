@@ -1,6 +1,6 @@
 <template>
     <v-layout align-center justify-center fill-height>
-        <v-btn @click.stop="saveDialog = true">
+        <v-btn @click.stop="saveDialog = true; onSave()">
             Save
         </v-btn>
         <v-btn @click.stop="loadDialog = true">
@@ -12,11 +12,7 @@
                 <v-card-title class="headline">Save this string</v-card-title>
 
                 <v-card-text>
-                    {{JSON.stringify({
-                    count: this.count,
-                    attack: this.attack,
-                    upgradeList: this.upgradeList
-                    })}}
+                    {{uuid}}
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -51,7 +47,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn flat @click="loadDialog = false">Close</v-btn>
-                    <v-btn flat v-on:click="load">Save</v-btn>
+                    <v-btn flat v-on:click="onLoad">Save</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -68,14 +64,21 @@
 </template>
 
 <script>
+    // import axios from 'axios'
     import { mapState } from 'vuex'
     import { mapMutations } from 'vuex'
+    import { mapActions } from 'vuex'
 
     export default {
         name: "Settings",
         methods:{
-            load(){
-                console.log(this.payload)
+            async onSave(){
+                this.save()
+                    .then(res=>{
+                        this.uuid = res.data.response.uuid
+                    })
+            },
+            async onLoad(){
 
                 if(this.payload.length === 0) {
                     this.alertText = `Payload can't be null!`
@@ -85,39 +88,33 @@
                     return;
                 }
 
-                let payload
-                try{
-                    payload = JSON.parse(this.payload)
-                }
-                catch (e) {
-                    this.alertType = 'error'
-                    this.alertText = e.message
-                    this.loadDialog=false
-                    this.sheet=true
-                    return
-                }
+                await this.load(this.payload)
+                    .then(res=>{
+                        this.alertType = 'success'
+                        this.alertText = 'Loading is done'
+                        this.loadDialog=false
+                        this.sheet=true
+                    })
+                    .catch(err=>{
+                        this.alertText = err.message
+                        this.alertType = 'error'
+                        this.loadDialog=false
+                        this.sheet=true
+                        return;
+                    })
 
-                if(!payload.count || !payload.attack || !payload.upgradeList) {
-                    this.alertType = 'error'
-                    this.alertText = "Can't load data! "
-                    this.loadDialog=false
-                    this.sheet=true
-                    return
-                }
+                // this.loadSave(payload)
 
-                this.loadSave(payload)
 
-                this.alertType = 'success'
-                this.alertText = 'Loading is done'
-                this.loadDialog=false
-                this.sheet=true
             },
-            ...mapMutations(["loadSave"])
+            ...mapMutations(["loadSave"]),
+            ...mapActions(['save','load'])
         },
         data(){
             return {
                 saveDialog:false,
                 loadDialog:false,
+                uuid:"",
                 payload:"",
                 alertType: "success",
                 alertText: "",
