@@ -96,6 +96,7 @@
 
                 await this.load(this.payload)
                     .then(res=>{
+                        console.log(res)
                         this.alertType = 'success'
                         this.alertText = 'Loading is done'
                         this.loadDialog=false
