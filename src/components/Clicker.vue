@@ -12,6 +12,23 @@
                 :value="mob.hp/max*100"
                 class="text-md-center"
         >{{Math.round(mob.hp * 100) / 100}} HP</v-progress-linear>
+
+        <v-snackbar
+                v-model="snackbar"
+                bottom
+                left
+                multi-line
+        >
+            {{ text }}
+
+            <v-btn
+                    color="pink"
+                    flat
+                    @click="snackbar = false"
+            >
+                Close
+            </v-btn>
+        </v-snackbar>
     </div>
 </template>
 
@@ -26,7 +43,11 @@
         name: "Clicker",
         data(){
             return {
-                max:0
+                max:0,
+                clicks:0,
+                snackbar: false,
+                timeout: 6000,
+                text: ''
             }
         },
         beforeMount(){
@@ -41,6 +62,12 @@
             ...mapMutations(['increment']),
             onClick:function(){
                 mainController.onClick(this.attack)
+                this.clicks += 1
+                if(this.clicks === 1000){
+                    this.text = "OMG!! You are crazy! Click 100 times!"
+                    this.snackbar = true
+                }
+
             },
             onGenerateMob(mob){
                 this.mob = mob
