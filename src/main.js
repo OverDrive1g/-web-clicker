@@ -1,18 +1,12 @@
 import Vue from 'vue'
-import VueAnalytics from 'vue-analytics'
-import Meta from 'vue-meta'
 import './plugins/vuetify'
+import './plugins/analitics'
+import './plugins/meta'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false;
-
-Vue.use(Meta)
-Vue.use(VueAnalytics, {
-  id: 'UA-140140564-1',
-  router
-})
 
 new Vue({
   router,

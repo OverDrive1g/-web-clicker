@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import * as config from './config'
 
 Vue.use(Vuex)
 
@@ -44,7 +45,7 @@ export default new Vuex.Store({
   },
   actions: {
     async initUpgradeList(context){
-      let response = await axios.get('/api/upgrade')
+      let response = await axios.get(config.backendUrl+'/upgrade')
       let data = response.data.map(i=>{i.count = 0; return i})
       context.commit('initUpgradeList', data)
     },
@@ -55,10 +56,10 @@ export default new Vuex.Store({
         upgradeList:context.state.upgradeList
       }
       console.log(JSON.stringify(payload))
-      return await axios.post('/api/save', JSON.stringify(payload))
+      return await axios.post(config.backendUrl+'/save', JSON.stringify(payload))
     },
     async load(context, uuid){
-      let savedData = await axios.post('/api/load', JSON.stringify({uuid}))
+      let savedData = await axios.post(config.backendUrl+'/load', JSON.stringify({uuid}))
       context.commit('loadSave', savedData.data.response.data)
     }
   }

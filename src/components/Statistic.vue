@@ -1,6 +1,6 @@
 <template>
     <div class="pa-3">
-        <p>Clicks: {{Math.round(count * 100) / 100}}</p>
+        <p>Coins: {{Math.round(count * 100) / 100}}</p>
         <p>Attack: {{Math.round(attack * 100) / 100}}</p>
     </div>
 </template>

@@ -35,8 +35,10 @@
 <script>
     import { mapMutations } from 'vuex'
     import { mapState } from 'vuex'
-    import {MainController} from "../controllers/MainController";
+    import { MainController } from "../controllers/MainController"
+    import AchievementsController from '../core/AchievementsController'
 
+    let achievementsController = new AchievementsController()
     let mainController
 
     export default {
@@ -52,6 +54,7 @@
         },
         beforeMount(){
             mainController = new MainController(this.attack, this.increment, this.onGenerateMob)
+
             this.max = this.attack * 10
             this.hp = this.attack * 10
         },
@@ -63,17 +66,19 @@
             onClick:function(){
                 mainController.onClick(this.attack)
                 this.clicks += 1
-                if(this.clicks === 1000){
-                    this.text = "OMG!! You are crazy! Click 100 times!"
-                    this.snackbar = true
-                }
-
             },
             onGenerateMob(mob){
                 this.mob = mob
                 this.max = mob.hp
+            },
+            showSnackbar(text){
+                this.text = text
+                this.snackbar = true
             }
         },
+        watch:{
+            clicks:achievementsController.clicksListener
+        }
     }
 </script>
 
