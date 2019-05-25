@@ -1,5 +1,5 @@
 import DamageController from "../core/DamageController"
-import MobFactory from "../core/MobFactory";
+import MobFactory from "../core/MobFactory"
 
 export class MainController{
     constructor(attack, increment, onGenerateMob){

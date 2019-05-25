@@ -91,7 +91,7 @@
                     this.alertType = 'error'
                     this.loadDialog=false
                     this.sheet=true
-                    return;
+                    return
                 }
 
                 await this.load(this.payload)
@@ -107,11 +107,7 @@
                         this.alertType = 'error'
                         this.loadDialog=false
                         this.sheet=true
-                        return;
                     })
-
-                // this.loadSave(payload)
-
 
             },
             ...mapMutations(["loadSave"]),

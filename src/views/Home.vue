@@ -22,8 +22,8 @@
 
 <script>
   import Clicker from '../components/Clicker.vue'
-  import Statistic from "../components/Statistic.vue";
-  import UpgradeList from "../components/UpgradeList.vue";
+  import Statistic from "../components/Statistic.vue"
+  import UpgradeList from "../components/UpgradeList.vue"
 
   export default {
     components: {

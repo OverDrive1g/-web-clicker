@@ -13,7 +13,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import UpgradeItem from "./UpgradeItem";
+    import UpgradeItem from "./UpgradeItem"
 
     export default {
         name: "UpgradeList",
