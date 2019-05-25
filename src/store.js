@@ -20,7 +20,6 @@ export default new Vuex.Store({
         state.count += state.attack
       }
     },
-
     initUpgradeList(state, initData){
       state.upgradeList = initData
     },
@@ -41,6 +40,11 @@ export default new Vuex.Store({
       state.count = payload.count
       state.attack = payload.attack
       state.upgradeList = payload.upgradeList
+    },
+    setReward(state, reward){
+      if(reward.type === "coin"){
+        state.count += reward.count
+      }
     }
   },
   actions: {

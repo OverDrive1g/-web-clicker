@@ -62,7 +62,7 @@
             ...mapState(["count","attack"])
         },
         methods: {
-            ...mapMutations(['increment']),
+            ...mapMutations(['increment', 'setReward']),
             onClick:function(){
                 mainController.onClick(this.attack)
                 this.clicks += 1
