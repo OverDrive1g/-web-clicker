@@ -2,6 +2,7 @@
     <div
         class="pa-3"
     >
+        <div class="text-xs-center mb-3">{{mob.name}}({{lvl}})</div>
         <v-img
                 :src="require('../assets/pig-coin.svg')"
                 v-on:click="onClick"
@@ -19,15 +20,19 @@
                 left
                 multi-line
         >
-            {{ text }}
-
-            <v-btn
-                    color="pink"
-                    flat
+            <v-icon
+                    color="white"
+                    class="mr-3"
+            >
+                local_airport
+            </v-icon>
+            <div><b>{{text}}</b> {{description}}</div>
+            <v-icon
+                    size="16"
                     @click="snackbar = false"
             >
-                Close
-            </v-btn>
+                close
+            </v-icon>
         </v-snackbar>
     </div>
 </template>
@@ -48,21 +53,22 @@
                 max:0,
                 clicks:0,
                 snackbar: false,
-                timeout: 6000,
-                text: ''
+                timeout: 2000,
+                text: '',
+                description:''
             }
         },
         beforeMount(){
-            mainController = new MainController(this.attack, this.increment, this.onGenerateMob)
+            mainController = new MainController(this.attack, this.incGold, this.onGenerateMob, this.incLvl, this.getLvl)
 
             this.max = this.attack * 10
             this.hp = this.attack * 10
         },
         computed: {
-            ...mapState(["count","attack"])
+            ...mapState(["count","attack", "lvl"])
         },
         methods: {
-            ...mapMutations(['increment', 'setReward']),
+            ...mapMutations(['incGold', 'setReward', 'incLvl']),
             onClick:function(){
                 mainController.onClick(this.attack)
                 this.clicks += 1
@@ -74,6 +80,9 @@
             showSnackbar(text){
                 this.text = text
                 this.snackbar = true
+            },
+            getLvl(){
+                return this.lvl
             }
         },
         watch:{

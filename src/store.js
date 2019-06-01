@@ -9,10 +9,11 @@ export default new Vuex.Store({
   state: {
     count:0,
     attack:1,
+    lvl:1,
     upgradeList:[]
   },
   mutations: {
-    increment (state, income) {
+    incGold (state, income) {
       if(income > 0){
         state.count += income
       }
@@ -45,6 +46,9 @@ export default new Vuex.Store({
       if(reward.type === "coin"){
         state.count += reward.count
       }
+    },
+    incLvl(state){
+      state.lvl += 1
     }
   },
   actions: {
