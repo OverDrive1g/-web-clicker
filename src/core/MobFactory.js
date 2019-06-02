@@ -38,7 +38,7 @@ class MobFactory {
      */
     getHpByLvl(lvl, isBoss) {
         if (lvl < 140) {
-            return Math.ceil(10 * (lvl - 1 + Math.pow(1.55, lvl - 1)) * (isBoss ? 10 : 1))
+            return Math.ceil(10 * (lvl - 1 + Math.pow(1.15, lvl - 1)) * (isBoss ? 10 : 1))
         } else if (lvl > 140 && lvl < 500) {
             return Math.ceil(10 * (139 + Math.pow(1.55, 139) * Math.pow(1.145, lvl - 140)) * (isBoss ? 10 : 1))
         } else if (lvl > 500 && lvl < 200000) {
