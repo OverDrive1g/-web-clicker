@@ -63,7 +63,6 @@ export default new Vuex.Store({
         attack:context.state.attack,
         upgradeList:context.state.upgradeList
       }
-      console.log(JSON.stringify(payload))
       return await axios.post(config.backendUrl+'/save', JSON.stringify(payload))
     },
     async load(context, uuid){
