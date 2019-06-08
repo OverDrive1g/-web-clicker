@@ -51,7 +51,6 @@
         data(){
             return {
                 max:0,
-                clicks:0,
                 snackbar: false,
                 timeout: 2000,
                 text: '',
@@ -59,19 +58,22 @@
             }
         },
         beforeMount(){
-            mainController = new MainController(this.attack, this.incGold, this.onGenerateMob, this.incLvl, this.getLvl)
+            mainController = new MainController(this.attack, this.incCoins, this.onGenerateMob, this.incLvl, this.getLvl)
 
             this.max = this.attack * 10
             this.hp = this.attack * 10
         },
         computed: {
-            ...mapState(["count","attack", "lvl"])
+            ...mapState('mob',["lvl"]),
+            ...mapState('player',["attack"])
         },
         methods: {
-            ...mapMutations(['incGold', 'setReward', 'incLvl']),
+            ...mapMutations('player', ['incCoins', 'setReward']),
+            ...mapMutations('mob', ['incLvl']),
+            ...mapMutations('statistic', ['incClicks']),
             onClick:function(){
                 mainController.onClick(this.attack)
-                this.clicks += 1
+                this.incClicks(1)
             },
             onGenerateMob(mob){
                 this.mob = mob

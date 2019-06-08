@@ -18,7 +18,10 @@
     export default {
         name: "UpgradeList",
         components: {UpgradeItem},
-        computed:mapState(['upgradeList']),
+        computed:{
+            ...mapState(['upgradeList']),
+            ...mapState('player', ["upgrades"]),
+        },
         data(){
             return {
 
