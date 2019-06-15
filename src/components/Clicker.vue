@@ -1,6 +1,7 @@
 <template>
     <div
         class="pa-3"
+        v-ripple="ripple"
     >
         <div class="text-xs-center mb-3">{{mob.name}}({{lvl}})</div>
         <v-img
@@ -66,7 +67,8 @@
         computed: {
             ...mapState('mob',["lvl"]),
             ...mapState('player',["attack"]),
-            ...mapState('statistic',["clicks"])
+            ...mapState('statistic',["clicks"]),
+            ...mapState('settings',["ripple"]),
         },
         methods: {
             ...mapMutations('player', ['incCoins', 'setReward']),

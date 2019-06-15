@@ -14,7 +14,7 @@
         <v-layout align-center justify-center row>
             <v-flex xs12>
                 <v-switch
-                        v-model="switch1"
+                        v-model="ripple"
                         :label="`Ripple on monster picture`"
                         color="red"
                 ></v-switch>
@@ -98,7 +98,7 @@
                     mob:this.mob,
                     statistic:this.statistic,
                     upgrade:upgrade,
-                    saveId:this.saveId != ""?this.saveId:null
+                    saveId:this.saveId?this.saveId:null
                 }
 
                 this.save(dataToSave)
@@ -140,8 +140,9 @@
                     })
 
             },
-            ...mapMutations(["loadSave","setSaveId"]),
+            ...mapMutations(["loadSave","setSaveId","settings/setRipple"]),
             ...mapActions(['save','load'])
+
         },
         data(){
             return {
@@ -152,13 +153,23 @@
                 alertType: "success",
                 alertText: "",
                 sheet:false,
-                switch1:true
+                ripple:true
             }
         },
         computed: {
             ...mapState(["player","mob","statistic","saveId"]),
+            ...mapState("settings", {
+                rippleValue:"ripple"
+            }),
             ...mapGetters(["player/getUpgradeList","player/getPlayerInfoToSave"])
-
+        },
+        beforeMount:function(){
+            this.ripple = this.rippleValue
+        },
+        watch: {
+            ripple:function(_new){
+                this["settings/setRipple"](_new)
+            }
         },
         metaInfo: {
             title: 'Settings',
@@ -191,8 +202,6 @@
             ]
         }
     }
-
-    //TODO: возможность убирать риплеры
 </script>
 
 <style scoped>
