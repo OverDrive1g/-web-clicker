@@ -19,8 +19,7 @@
         name: "UpgradeList",
         components: {UpgradeItem},
         computed:{
-            ...mapState(['upgradeList']),
-            ...mapState('player', ["upgrades"]),
+            ...mapState('player', ['upgradeList']),
         },
         data(){
             return {

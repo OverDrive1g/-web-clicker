@@ -65,7 +65,8 @@
         },
         computed: {
             ...mapState('mob',["lvl"]),
-            ...mapState('player',["attack"])
+            ...mapState('player',["attack"]),
+            ...mapState('statistic',["clicks"])
         },
         methods: {
             ...mapMutations('player', ['incCoins', 'setReward']),

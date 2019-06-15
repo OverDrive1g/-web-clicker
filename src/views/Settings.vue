@@ -158,8 +158,11 @@
             ]
         }
     }
+
+    //TODO: возможность убирать риплеры
 </script>
 
 <style scoped>
 
 </style>
+

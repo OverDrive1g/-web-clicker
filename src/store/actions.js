@@ -5,7 +5,8 @@ export default {
     async initUpgradeList(context){
         let response = await axios.get(config.backendUrl+'/upgrade')
         let data = response.data.map(i=>{i.count = 0; return i})
-        context.commit('initUpgradeList', data)
+
+        context.commit('player/initUpgradeList', data)
     },
     async save(context){
         let payload = {
