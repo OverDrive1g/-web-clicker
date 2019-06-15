@@ -5,5 +5,8 @@ export default {
         state.attack = payload.attack
         state.upgradeList = payload.upgradeList
     },
+    setSaveId(state, id){
+        state.saveId = id
+    }
 
 }

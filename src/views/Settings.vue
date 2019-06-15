@@ -84,13 +84,26 @@
     import { mapState } from 'vuex'
     import { mapMutations } from 'vuex'
     import { mapActions } from 'vuex'
+    import { mapGetters } from 'vuex'
 
     export default {
         name: "Settings",
         methods:{
             async onSave(){
-                this.save()
+                let upgrade = this["player/getUpgradeList"]
+                let player = this["player/getPlayerInfoToSave"]
+
+                let dataToSave = {
+                    player:player,
+                    mob:this.mob,
+                    statistic:this.statistic,
+                    upgrade:upgrade,
+                    saveId:this.saveId != ""?this.saveId:null
+                }
+
+                this.save(dataToSave)
                     .then(res=>{
+                        this.setSaveId(res.data.response.uuid)
                         this.uuid = res.data.response.uuid
                         this.saveDialog = true
                     })
@@ -127,7 +140,7 @@
                     })
 
             },
-            ...mapMutations(["loadSave"]),
+            ...mapMutations(["loadSave","setSaveId"]),
             ...mapActions(['save','load'])
         },
         data(){
@@ -143,7 +156,9 @@
             }
         },
         computed: {
-            ...mapState(["count","attack","upgradeList"])
+            ...mapState(["player","mob","statistic","saveId"]),
+            ...mapGetters(["player/getUpgradeList","player/getPlayerInfoToSave"])
+
         },
         metaInfo: {
             title: 'Settings',

@@ -8,12 +8,7 @@ export default {
 
         context.commit('player/initUpgradeList', data)
     },
-    async save(context){
-        let payload = {
-            count:context.state.count,
-            attack:context.state.attack,
-            upgradeList:context.state.upgradeList
-        }
+    async save(context, payload){
         return await axios.post(config.backendUrl+'/save', JSON.stringify(payload))
     },
     async load(context, uuid){
