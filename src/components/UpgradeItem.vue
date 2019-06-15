@@ -38,7 +38,7 @@
             ...mapState('player', ['coins'])
         },
         watch:{
-            coins:function(_new,_old){
+            coins:function(_new){
                 let price = this.upgrade.basePrice * Math.pow(this.upgrade.multiplier, this.upgrade.count)
                 if(_new >= price){
                     this.disabled = false

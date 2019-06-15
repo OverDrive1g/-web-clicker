@@ -1,11 +1,27 @@
 <template>
-    <v-layout align-center justify-center fill-height>
-        <v-btn @click.stop="onSave()">
-            Save
-        </v-btn>
-        <v-btn @click.stop="loadDialog = true">
-            Load
-        </v-btn>
+    <v-layout align-space-around column>
+        <v-layout align-center justify-center row>
+            <v-flex xs12 class="pt-2">
+                <v-btn @click.stop="onSave()">
+                    Save
+                </v-btn>
+                <v-btn @click.stop="loadDialog = true">
+                    Load
+                </v-btn>
+
+            </v-flex>
+        </v-layout>
+        <v-layout align-center justify-center row>
+            <v-flex xs12>
+                <v-switch
+                        v-model="switch1"
+                        :label="`Ripple on monster picture`"
+                        color="red"
+                ></v-switch>
+            </v-flex>
+
+        </v-layout>
+
 
         <v-dialog v-model="saveDialog" width="600px" >
             <v-card>
@@ -61,6 +77,7 @@
             </v-alert>
         </v-bottom-sheet>
     </v-layout>
+
 </template>
 
 <script>
@@ -121,7 +138,8 @@
                 payload:"",
                 alertType: "success",
                 alertText: "",
-                sheet:false
+                sheet:false,
+                switch1:true
             }
         },
         computed: {
