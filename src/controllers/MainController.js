@@ -9,7 +9,7 @@ export class MainController{
         this.onGenerateMob = onGenerateMob
         this.incLvl = incLvl
         this.getLvl = getLvl
-        this.generateMob(attack)
+        this.generateMob(getLvl())
     }
 
     onClick(attack){
