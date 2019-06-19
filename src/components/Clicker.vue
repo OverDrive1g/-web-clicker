@@ -15,26 +15,7 @@
                 class="text-md-center"
         >{{Math.round(mob.hp * 100) / 100}} HP</v-progress-linear>
 
-        <v-snackbar
-                v-model="snackbar"
-                bottom
-                left
-                multi-line
-        >
-            <v-icon
-                    color="white"
-                    class="mr-3"
-            >
-                local_airport
-            </v-icon>
-            <div><b>{{text}}</b> {{description}}</div>
-            <v-icon
-                    size="16"
-                    @click="snackbar = false"
-            >
-                close
-            </v-icon>
-        </v-snackbar>
+
     </div>
 </template>
 
@@ -74,6 +55,7 @@
             ...mapMutations('player', ['incCoins', 'setReward']),
             ...mapMutations('mob', ['incLvl']),
             ...mapMutations('statistic', ['incClicks']),
+            ...mapMutations(['addNotification']),
             onClick:function(){
                 mainController.onClick(this.attack)
                 this.incClicks(1)
@@ -82,9 +64,8 @@
                 this.mob = mob
                 this.max = mob.hp
             },
-            showSnackbar(text){
-                this.text = text
-                this.snackbar = true
+            showSnackbar(text, icon){
+                this.addNotification(text, icon)
             },
             getLvl(){
                 return this.lvl

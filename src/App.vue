@@ -73,20 +73,24 @@
 <script>
 import { mapActions } from 'vuex'
 
+
 export default {
   name: 'App',
-  components: {
-    // Home
-  },
+  components: {},
   data: () => ({
-    drawer: null
+    drawer: null,
+    notificationModel: false,
+    notificationText:"",
+    notificationIcon:""
   }),
   methods:{
-    ...mapActions(['initUpgradeList'])
+    ...mapActions(['initUpgradeList']),
+
   },
   async created() {
     this.initUpgradeList()
   },
+
   metaInfo:{
     titleTemplate: '%s | Clicker',
     meta: [

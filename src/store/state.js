@@ -1,3 +1,4 @@
 export default {
-    saveId:""
+    saveId:"",
+    notificationQueue: []
 }

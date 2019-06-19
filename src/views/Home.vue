@@ -17,6 +17,26 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <v-snackbar
+            v-model="notificationModel"
+            bottom
+            left
+            multi-line
+    >
+      <v-icon
+              color="white"
+              class="mr-3"
+      >
+        {{notificationIcon}}
+      </v-icon>
+      <div>{{notificationText}}</div>
+      <v-icon
+              size="16"
+              @click="notificationModel = false"
+      >
+        close
+      </v-icon>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -25,11 +45,48 @@
   import Statistic from "../components/Statistic.vue"
   import UpgradeList from "../components/UpgradeList.vue"
 
+  import { mapState } from 'vuex'
+  import { mapMutations } from 'vuex'
+
   export default {
     components: {
       UpgradeList,
       Statistic,
       Clicker
+    },
+    data: () => ({
+      notificationModel: false,
+      notificationText:"",
+      notificationIcon:""
+    }),
+    computed:{
+      ...mapState(["notificationQueue"])
+    },
+    methods:{
+      ...mapMutations(["setNotification"])
+    },
+    watch:{
+      notificationModel(){
+        if(!this.notificationModel && this.notificationQueue.length > 0){
+          let notification = this.notificationQueue.shift()
+
+          if(!notification) return
+
+          this.notificationText = notification.text
+          this.notificationIcon = notification.icon
+
+          this.$nextTick(() => this.notificationModel = true)
+        }
+      },
+      notificationQueue(){
+        if(!this.notificationModel && this.notificationQueue.length > 0){
+          let notification = this.notificationQueue.shift()
+          this.notificationText = notification.text
+          this.notificationIcon = notification.icon
+
+          this.$nextTick(() => this.notificationModel = true)
+        }
+      }
     },
     metaInfo:{
       title: 'Pig-Clicker',
