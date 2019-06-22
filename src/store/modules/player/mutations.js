@@ -1,5 +1,5 @@
 export default {
-    incCoins(state, income) {
+    incGold(state, income) {
         state.coins += income
     },
     setReward(state, reward){
