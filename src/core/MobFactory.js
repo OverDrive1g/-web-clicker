@@ -21,7 +21,7 @@ class MobFactory {
 
     getMob(lvl, isBoss) {
         let hp =this.getHpByLvl(lvl, isBoss)
-        let gold = this.getGold(lvl) * (isBoss?10:1)
+        let gold = this.getGold(lvl) * (isBoss?15:1)
         let mob = {
             name: this.mobs[Math.floor(Math.random() * this.mobs.length)],
             hp,
