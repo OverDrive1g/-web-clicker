@@ -72,6 +72,7 @@
 
           if(!notification) return
 
+          console.log(notification)
           this.notificationText = notification.text
           this.notificationIcon = notification.icon
 
@@ -81,6 +82,8 @@
       notificationQueue(){
         if(!this.notificationModel && this.notificationQueue.length > 0){
           let notification = this.notificationQueue.shift()
+
+          console.log(notification)
           this.notificationText = notification.text
           this.notificationIcon = notification.icon
 

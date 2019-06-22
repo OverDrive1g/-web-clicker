@@ -65,7 +65,7 @@
                 this.max = mob.hp
             },
             showSnackbar(text, icon){
-                this.addNotification(text, icon)
+                this.addNotification({text, icon})
             },
             getLvl(){
                 return this.lvl

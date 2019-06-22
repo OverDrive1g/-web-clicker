@@ -22,8 +22,8 @@ export default {
     setSaveId(state, id){
         state.saveId = id
     },
-    addNotification(state, text, icon="info"){
-        state.notificationQueue.push({text,icon})
+    addNotification(state, notification){
+        state.notificationQueue.push(notification)
         state.notification = true
     }
 }
