@@ -46,30 +46,42 @@
             this.hp = this.attack * 10
         },
         computed: {
-            ...mapState('mob',["lvl"]),
+            ...mapState('mob',["lvl", "killedOnLvl"]),
             ...mapState('player',["attack"]),
             ...mapState('statistic',["clicks"]),
             ...mapState('settings',["ripple"]),
         },
         methods: {
             ...mapMutations('player', ['incGold', 'setReward']),
-            ...mapMutations('mob', ['incLvl']),
+            ...mapMutations('mob', ['incLvl', 'incKilledOnLvl', 'restoreKilledOnLvl']),
             ...mapMutations('statistic', ['incClicks']),
             ...mapMutations(['addNotification']),
             onClick:function(){
                 let damage = damageController.getDamageByAttack(this.attack)
                 this.mob.hp -=damage
                 if(this.mob.hp <= 0){
+                    this.incKilledOnLvl()
                     this.onKillMonster(this.mob, this.lvl)
-                    this.incLvl()
                     this.incGold(this.mob.gold)
-                    this.generateMob()
+
+                    if(this.killedOnLvl < 10){
+                        this.generateMob()
+                    }
+                    if(this.killedOnLvl === 10){
+                        this.generateBoss()
+                    }
+
+
                 }
 
                 this.incClicks(1)
             },
             generateMob(){
-                this.mob = mobFactory.getMob(this.lvl)
+                this.mob = mobFactory.getMob(this.lvl,false)
+                this.max = this.mob.hp
+            },
+            generateBoss(){
+                this.mob = mobFactory.getMob(this.lvl,true)
                 this.max = this.mob.hp
             },
             showSnackbar(text, icon){
@@ -77,6 +89,10 @@
             },
             onKillMonster(monster, lvl){
                 console.log(monster, lvl)
+                if(monster.isBoss){
+                    this.incLvl()
+                    this.restoreKilledOnLvl()
+                }
             }
         },
         watch:{
